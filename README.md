@@ -213,3 +213,5 @@ By integrating a logistic regression model into a MySQL UDF, we've enhanced the 
   - [Logistic Regression](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html)
 - **Project Guidelines:**
   - **ML-aware SQLite Project Description**
+- **UDF Samples:**
+  - [MySQL Server udf_example.cc File](https://github.com/mysql/mysql-server/blob/trunk/sql/udf_example.cc) 
