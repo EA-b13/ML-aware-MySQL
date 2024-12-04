@@ -57,7 +57,7 @@ These parameters are used in the UDF to compute the probability of a value being
 
 The UDF is implemented in C++ and uses the trained model parameters to evaluate each input value.
 
-- **File:** `outlier_regression.cpp`
+- **File:** `UDF Samples/outlier_regression.cpp`
 
 ### How the UDF Uses the Model
 
