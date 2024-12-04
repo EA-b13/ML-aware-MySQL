@@ -207,11 +207,9 @@ By integrating a logistic regression model into a MySQL UDF, we've enhanced the 
 ## References
 
 - **MySQL Documentation:**
-  - [Adding New Functions to MySQL](https://dev.mysql.com/doc/refman/8.0/en/adding-functions.html)
-  - [User-Defined Functions](https://dev.mysql.com/doc/refman/8.0/en/udf.html)
+  - [Adding New Functions to MySQL](https://dev.mysql.com/doc/extending-mysql/8.0/en/adding-loadable-function.html#loadable-function-compiling)
+  - [User-Defined Functions](https://dev.mysql.com/doc/extending-mysql/8.0/en/adding-functions.html)
 - **Scikit-learn Documentation:**
-  - [Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
-- **C++ Reference:**
-  - [Math Functions (`<cmath>`)](https://www.cplusplus.com/reference/cmath/)
+  - [Logistic Regression](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html)
 - **Project Guidelines:**
   - **ML-aware SQLite Project Description**
