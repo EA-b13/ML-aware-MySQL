@@ -25,10 +25,10 @@ A sentiment() UDF is created in MySQL which predicts the sentiment of the text a
 ## Machine Learning Model
 
 ALBERT pre-trained transformer model (from Huggingface)
-- **File:** `albert_model/albert_sentiment_model.pt`
+- **File:** `Sentiment Analysis/albert_model/albert_sentiment_model.pt`
 
 Sentencepiece tokenizer
-- **File:** `albert_tokenizer/spiece.model`
+- **File:** `Sentiment Analysis/albert_tokenizer/spiece.model`
 
 ### Training the Model
 
@@ -36,7 +36,7 @@ Sentencepiece tokenizer
 
 The UDF is implemented in C++ and uses the trained model parameters to evaluate each input value.
 
-- **File:** `udf_sentiment.cpp`
+- **File:** `Sentiment Analysis/udf_sentiment.cpp`
 
 ### How the UDF Uses the Model
 
@@ -67,8 +67,8 @@ The UDF is implemented in C++ and uses the trained model parameters to evaluate 
 - Copy model and tokenizer files to your MySQL plugin directory.
 
 ```bash
-cp albert_model/albert_sentiment_model.pt /usr/local/mysql/lib/plugin/
-cp albert_tokenizer/spiece.model /usr/local/mysql/lib/plugin/
+cp Sentiment Analysis/albert_model/albert_sentiment_model.pt /usr/local/mysql/lib/plugin/
+cp Sentiment Analysis/albert_tokenizer/spiece.model /usr/local/mysql/lib/plugin/
 ```
 - You can find your plugin directory in MySQL using the following command:
 
@@ -110,7 +110,7 @@ SHOW VARIABLES LIKE 'plugin_dir';
    - Copy `sentiment_udf.dll` (Windows) or `sentiment_udf.so` (MacOS/Linux) to this directory.
 
   ```bash
-  cp sentiment_udf.so /usr/local/mysql/lib/plugin/
+  cp Sentiment Analysis/build/sentiment_udf.so /usr/local/mysql/lib/plugin/
   ```
 2. **Copy the dependent libraries to the MySQL plugin directory.**
 
@@ -120,6 +120,8 @@ SHOW VARIABLES LIKE 'plugin_dir';
    cp ~/libtorch/lib/libtorch.dylib /usr/local/mysql/lib/plugin/
    cp ~/libtorch/lib/libtorch_cpu.dylib /usr/local/mysql/lib/plugin/
    ```
+
+   You can also use the .dylib files in this repo (generated on a MacOS machine, present at `Sentiment Analysis/build_libs`
 3. **Run MySQL with the following path:**
 
    ```bash
@@ -210,7 +212,7 @@ This UDF leverages a logistic regression model trained to identify outliers in t
 
 The model is trained using a simple logistic regression algorithm from scikit-learn. The training script is located at:
 
-- **File:** `UDF Samples/model_trainer.py`
+- **File:** `UDF Samples Outlier Detection/model_trainer.py`
 
 **Training Data:**
 
@@ -241,7 +243,7 @@ These parameters are used in the UDF to compute the probability of a value being
 
 The UDF is implemented in C++ and uses the trained model parameters to evaluate each input value.
 
-- **File:** `UDF Samples/outlier_regression.cpp`
+- **File:** `UDF Samples Outlier Detection/outlier_regression.cpp`
 
 ### How the UDF Uses the Model
 
