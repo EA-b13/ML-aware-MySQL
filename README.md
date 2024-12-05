@@ -81,7 +81,7 @@ SHOW VARIABLES LIKE 'plugin_dir';
 #### On Linux/Windows
 
 1. **Open Terminal**.
-2. **Navigate** to the directory containing `CMakeLists.txt`
+2. **Navigate** to the directory containing `CMakeLists.txt` (Present at `Sentiment Analysis/CMakeLists.txt` in this case)
 3. **Change the directory path for the dependent libraries in the `CMakeLists.txt` file**. This includes paths for the following:
    - Torch
    - SENTENCEPIECE_INCLUDE_DIR, SENTENCEPIECE_LIBRARY
