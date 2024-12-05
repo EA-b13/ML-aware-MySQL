@@ -192,6 +192,21 @@ SHOW VARIABLES LIKE 'plugin_dir';
 - The query selects records where the sentiment of `review_text` is classified as > 0.8 (positive).
 
 
+## Downloading the dataset for Sentiment Analysis
+
+1. **Make sure curl and unzip are installed.**
+
+2. **Download and prepare the dataset**
+
+   - Run `./get_dataset.sh` to retrive the dataset from kaggle
+   - Run `./clean.sh sentiment_analysis.csv sentiment_analysis_cleaned.csv` to clean the dataset of quoted text for SQL loading
+   - Copy the `sentiment_analysis_cleaned.csv` to a MySQL-accessible location. On linux this is `/var/lib/mysql-files/`. `sudo` may be needed.
+   - Update `load_sentiment_analysis.sql` path for the dataset.
+     ```sql
+        LOAD DATA INFILE '/var/lib/mysql-files/sentiment_analysis_cleaned.csv'  -- Modify directory if you're not using Linux
+        INTO TABLE sentiment_analysis_table
+     ```
+    - Run the mysql script. `mysql -u root -p [Database Name] < load_sentiment_analysis.sql`
 
 
 # Outlier Detection
