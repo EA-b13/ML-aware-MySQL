@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -o CMakeFiles/example.dir/test/test.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/test/test.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/test/test.cpp",
+  "output": "CMakeFiles/example.dir/test/test.cpp.o"
+},
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -o CMakeFiles/example.dir/sentiment_analyzer.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/sentiment_analyzer.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/sentiment_analyzer.cpp",
+  "output": "CMakeFiles/example.dir/sentiment_analyzer.cpp.o"
+},
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -o CMakeFiles/example.dir/tokenizer.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/tokenizer.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/tokenizer.cpp",
+  "output": "CMakeFiles/example.dir/tokenizer.cpp.o"
+},
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -Dsentiment_udf_EXPORTS -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -fPIC -o CMakeFiles/sentiment_udf.dir/udf_sentiment.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/udf_sentiment.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/udf_sentiment.cpp",
+  "output": "CMakeFiles/sentiment_udf.dir/udf_sentiment.cpp.o"
+},
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -Dsentiment_udf_EXPORTS -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -fPIC -o CMakeFiles/sentiment_udf.dir/sentiment_analyzer.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/sentiment_analyzer.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/sentiment_analyzer.cpp",
+  "output": "CMakeFiles/sentiment_udf.dir/sentiment_analyzer.cpp.o"
+},
+{
+  "directory": "/Users/eashanbajaj/CS541Project/build",
+  "command": "/usr/bin/clang++ -DUSE_C10D_GLOO -DUSE_DISTRIBUTED -DUSE_RPC -DUSE_TENSORPIPE -Dsentiment_udf_EXPORTS -I/opt/homebrew/include -I/opt/homebrew/Cellar/mysql/9.0.1_6/include/mysql -I\"/Users/eashanbajaj/CS541Project/Sentiment Analysis/include\" -isystem /Users/eashanbajaj/libtorch/include -isystem /Users/eashanbajaj/libtorch/include/torch/csrc/api/include -g -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -fPIC -o CMakeFiles/sentiment_udf.dir/tokenizer.cpp.o -c \"/Users/eashanbajaj/CS541Project/Sentiment Analysis/tokenizer.cpp\"",
+  "file": "/Users/eashanbajaj/CS541Project/Sentiment Analysis/tokenizer.cpp",
+  "output": "CMakeFiles/sentiment_udf.dir/tokenizer.cpp.o"
+}
+]
