@@ -2,11 +2,194 @@
 
 ## Introduction
 
-This project integrates a machine learning (ML) outlier detection predicate into MySQL using User-Defined Functions (UDFs). By leveraging logistic regression, we can classify each data point as an outlier or not directly within SQL queries, enhancing the database with ML capabilities.
+This project integrates a machine learning (ML) sentiment analysis & outlier detection predicate into MySQL using User-Defined Functions (UDFs). Using Natural Language Processing (NLP) and transformers, we can predict the sentiment of any text. By leveraging logistic regression, we can classify each data point as an outlier or not directly within SQL queries, enhancing the database with ML capabilities.
 
 ---
 
 ## Overview
+
+## Sentiment Analysis
+
+The goal is to add sentiment analysis as an ML predicate into MySQL syntax. This will make queries like these possible:
+
+```sql
+SELECT 
+    review_text, 
+    SENTIMENT(review_text) AS sentiment_score 
+FROM 
+    reviews 
+HAVING 
+    sentiment_score > 0.85;
+```
+A sentiment() UDF is created in MySQL which predicts the sentiment of the text and returns the sentiment score (range is 0-1: completely negative to completely positive). This uses a pre-trained ALBERT transformers model from HuggingFace and the Sentencepiece tokenizer to predict the sentiment of a text.
+
+## Machine Learning Model
+
+ALBERT pre-trained transformer model (from Huggingface)
+- **File:** `albert_model/albert_sentiment_model.pt`
+
+Sentencepiece tokenizer
+- **File:** `albert_tokenizer/spiece.model`
+
+### Training the Model
+
+## UDF Implementation
+
+The UDF is implemented in C++ and uses the trained model parameters to evaluate each input value.
+
+- **File:** `udf_sentiment.cpp`
+
+### How the UDF Uses the Model
+
+- **Input:** A single string value from a column.
+- **Process:**
+  - Loads the transformers library and the tokenizer
+  - Tokenize the input, pass to the model.
+  - Extract the probabilities from the model output using softmax, return the positive score.
+- **Output:**
+  - Returns a score between `0` and `1`, assuming class `1` is positive.
+ 
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- **MySQL Server** installed and running.
+- **MySQL Development Headers and Libraries** (for compiling UDFs).
+- **C++ Compiler** (preferably `CMake`).
+- **Package manager** (preferably `pip`).
+- **LibTorch library** - `pip3 install torch`
+- **HuggingFace transformers library** - `pip3 install transformers`
+- **SentencePiece tokenizer library** - `pip3 install sentencepiece`
+
+### Modifying the UDF
+- Update model_path and tokenizer_model_path in `udf_sentiment.cpp` accoriding to your MySQL plugin directory.
+- Copy model and tokenizer files to your MySQL plugin directory.
+
+```bash
+cp albert_model/albert_sentiment_model.pt /usr/local/mysql/lib/plugin/
+cp albert_tokenizer/spiece.model /usr/local/mysql/lib/plugin/
+```
+- You can find your plugin directory in MySQL using the following command:
+
+```sql
+SHOW VARIABLES LIKE 'plugin_dir';
+```
+
+### Compiling the UDF
+
+#### On Linux/Windows
+
+1. **Open Terminal**.
+2. **Navigate** to the directory containing `CMakeLists.txt`
+3. **Change the directory path for the dependent libraries in the `CMakeLists.txt` file**. This includes paths for the following:
+   - Torch
+   - SENTENCEPIECE_INCLUDE_DIR, SENTENCEPIECE_LIBRARY
+   - MYSQL_INCLUDE_DIR, MYSQL_LIBRARY
+   - MySQL plugin directory
+4. **Compile** the UDF (Skip 1st step if `build` directory is already created):
+
+   ```bash
+   mkdir build
+   cd build
+   cmake ..
+   make
+   ```
+5. **Optional: ** Run example executable binary to test the build.
+
+   ```bash
+   ./example
+   ```
+
+### Installing the UDF in MySQL
+
+1. **Copy the compiled library to the MySQL plugin directory.**
+
+   - Find the plugin directory:
+
+   - Copy `sentiment_udf.dll` (Windows) or `sentiment_udf.so` (MacOS/Linux) to this directory.
+
+  ```bash
+  cp sentiment_udf.so /usr/local/mysql/lib/plugin/
+  ```
+2. **Copy the dependent libraries to the MySQL plugin directory.**
+
+   ```bash
+   cp ~/libtorch/lib/libc10.dylib /usr/local/mysql/lib/plugin/
+   cp ~/libtorch/lib/libomp.dylib /usr/local/mysql/lib/plugin/
+   cp ~/libtorch/lib/libtorch.dylib /usr/local/mysql/lib/plugin/
+   cp ~/libtorch/lib/libtorch_cpu.dylib /usr/local/mysql/lib/plugin/
+   ```
+3. **Run MySQL with the following path:**
+
+   ```bash
+   sudo env DYLD_LIBRARY_PATH=/usr/local/mysql/lib/plugin /usr/local/mysql/bin/mysqld --datadir=/usr/local/mysql/mysql-files --user=mysql
+   ```
+
+4. **Create the UDF in MySQL:**
+
+   ```sql
+   CREATE FUNCTION sentiment RETURNS REAL SONAME 'sentiment_udf.so';
+   ```
+
+   - Use `'sentiment_udf.dll'` on Windows.
+
+---
+
+## Testing the UDF
+
+1. **Prepare the Data Table:**
+
+   ```sql
+   CREATE TABLE reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    review_text TEXT
+    );
+
+
+   INSERT INTO reviews (review_text) VALUES
+    ('I love this product! It works wonderfully.'),
+    ('This is the worst experience I have ever had.'),
+    ('It is okay, not great but not bad either.'),
+    ('Absolutely fantastic! Exceeded my expectations.');
+
+   ```
+
+2. **Test the UDF:**
+
+   ```sql
+   SELECT SENTIMENT('I absolutely love this product!') AS sentiment_score;
+
+   SELECT 
+    review_text, 
+    SENTIMENT(review_text) AS sentiment_score
+    FROM 
+   reviews;
+
+   ```
+
+3. **Use in a `WHERE` Clause:**
+
+   ```sql
+   SELECT 
+    review_text, 
+    SENTIMENT(review_text) AS sentiment_score
+    FROM 
+        reviews
+    WHERE 
+        SENTIMENT(review_text) > 0.8;
+
+   ```
+
+---
+
+**Explanation:**
+
+- The query selects records where the sentiment of `review_text` is classified as > 0.8 (positive).
+
+
+## Outlier Detection
 
 The goal is to add an ML predicate, specifically an outlier detector, into SQL syntax. This allows for queries like:
 
