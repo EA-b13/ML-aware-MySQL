@@ -6,7 +6,6 @@ This project integrates a machine learning (ML) sentiment analysis & outlier det
 
 ---
 
-## Overview
 
 ## Sentiment Analysis
 
@@ -187,6 +186,8 @@ SHOW VARIABLES LIKE 'plugin_dir';
 **Explanation:**
 
 - The query selects records where the sentiment of `review_text` is classified as > 0.8 (positive).
+
+
 
 
 ## Outlier Detection
