@@ -32,6 +32,8 @@ Sentencepiece tokenizer
 
 ### Training the Model
 
+The ALBERT model used here is pretrained on Stanford Sentiment Treebank - 2 (SST-2) database.
+
 ## UDF Implementation
 
 The UDF is implemented in C++ and uses the trained model parameters to evaluate each input value.
@@ -395,6 +397,14 @@ By integrating a logistic regression model into a MySQL UDF, we've enhanced the 
 - **MySQL Documentation:**
   - [Adding New Functions to MySQL](https://dev.mysql.com/doc/extending-mysql/8.0/en/adding-loadable-function.html#loadable-function-compiling)
   - [User-Defined Functions](https://dev.mysql.com/doc/extending-mysql/8.0/en/adding-functions.html)
+- **Libtorch Documentation:**
+  - [Installing Libtorch](https://pytorch.org/cppdocs/installing.html)
+- **HuggingFace ALBERT Model and Documentation:**
+  - [ALBERT Model](https://huggingface.co/textattack/albert-base-v2-SST-2)
+  - [Transformers Library](https://huggingface.co/transformers/v4.7.0/installation.html)
+  - [Pretrained ALBERT model on SST-2](https://github.com/dhpollack/huggingface_libtorch/tree/master?tab=readme-ov-file)
+- **SentencePiece Tokenizer**
+  - [SentencePiece github repo](https://github.com/google/sentencepiece) 
 - **Scikit-learn Documentation:**
   - [Logistic Regression](https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html)
 - **Project Guidelines:**
