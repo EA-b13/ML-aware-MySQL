@@ -7,7 +7,7 @@ This project integrates a machine learning (ML) sentiment analysis & outlier det
 ---
 
 
-## Sentiment Analysis
+# Sentiment Analysis
 
 The goal is to add sentiment analysis as an ML predicate into MySQL syntax. This will make queries like these possible:
 
@@ -192,7 +192,7 @@ SHOW VARIABLES LIKE 'plugin_dir';
 
 
 
-## Outlier Detection
+# Outlier Detection
 
 The goal is to add an ML predicate, specifically an outlier detector, into SQL syntax. This allows for queries like:
 
