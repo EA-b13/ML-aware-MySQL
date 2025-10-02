@@ -1,4 +1,4 @@
-# CS541Project
+# ML Aware MySQL
 
 ## Introduction
 
